@@ -1,0 +1,4 @@
+# Project exclude paths
+/cocoon-security-authentication/target/
+/cocoon-security-authorization/target/
+/cocoon-security-base/target/
