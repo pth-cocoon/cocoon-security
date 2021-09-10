@@ -1,21 +1,21 @@
-package vin.pth.authentication.factory;
+package vin.pth.authentication.manager;
 
 import java.util.List;
 import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import vin.pth.authentication.provider.TokenProvider;
+import vin.pth.authentication.provider.TokenMatcher;
 import vin.pth.base.exception.authentication.AuthenticationException;
 import vin.pth.base.pojo.Authentication;
 
+@RequiredArgsConstructor
 @Component
-public class TokenFactory {
+public class TokenMatcherManager {
 
-  @Autowired(required = false)
-  private List<TokenProvider> providerList;
+  private final List<TokenMatcher> matcherList;
 
   public Authentication getTokenByParam(Map<String, String> param) {
-    for (TokenProvider provider : providerList) {
+    for (TokenMatcher provider : matcherList) {
       Authentication authentication = provider.match(param);
       if (authentication != null) {
         return authentication;

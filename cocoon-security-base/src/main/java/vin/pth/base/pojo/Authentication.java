@@ -21,9 +21,9 @@ public interface Authentication {
   /**
    * 用户信息
    *
-   * @return Ojbect
+   * @return UserDetails
    */
-  Object getDetails();
+  UserDetails getUserDetails();
 
   /**
    * 是认证验通过

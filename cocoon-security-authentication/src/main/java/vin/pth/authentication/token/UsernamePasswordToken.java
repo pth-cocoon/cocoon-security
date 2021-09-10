@@ -4,18 +4,25 @@ package vin.pth.authentication.token;
 import java.util.Collection;
 import lombok.Getter;
 import lombok.Setter;
+import vin.pth.base.pojo.Authentication;
 import vin.pth.base.pojo.GrantedAuthority;
+import vin.pth.base.pojo.UserDetails;
 
 @Getter
 @Setter
-public class UsernamePasswordToken extends AuthenticationToken {
+public class UsernamePasswordToken implements Authentication {
 
-  private String username;
-  private String password;
-  private Object userInfo;
-  private Collection<? extends GrantedAuthority> authorities;
+  private final String username;
+  private final String password;
+  Collection<? extends GrantedAuthority> authorities;
+  private UserDetails userDetails;
   private boolean authenticated;
 
+  public UsernamePasswordToken(String username, String password) {
+    this.username = username;
+    this.password = password;
+    this.authenticated = false;
+  }
 
   @Override
   public String getPrincipal() {
@@ -25,11 +32,6 @@ public class UsernamePasswordToken extends AuthenticationToken {
   @Override
   public String getCredentials() {
     return password;
-  }
-
-  @Override
-  public Object getDetails() {
-    return username;
   }
 
 }
