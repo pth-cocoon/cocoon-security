@@ -7,7 +7,7 @@ import vin.pth.authentication.token.UsernamePasswordToken;
 import vin.pth.base.pojo.Authentication;
 
 @Component
-public class UsernamePasswordMatcher implements TokenMatcher {
+public class UsernamePasswordMatcher implements AuthenticationMatcher {
 
   @Override
   public Authentication match(Map<String, String> map) {

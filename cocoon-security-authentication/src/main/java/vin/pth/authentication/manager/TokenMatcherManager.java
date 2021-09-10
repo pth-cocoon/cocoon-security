@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import vin.pth.authentication.provider.TokenMatcher;
+import vin.pth.authentication.provider.AuthenticationMatcher;
 import vin.pth.base.exception.authentication.AuthenticationException;
 import vin.pth.base.pojo.Authentication;
 
@@ -12,10 +12,10 @@ import vin.pth.base.pojo.Authentication;
 @Component
 public class TokenMatcherManager {
 
-  private final List<TokenMatcher> matcherList;
+  private final List<AuthenticationMatcher> matcherList;
 
   public Authentication getTokenByParam(Map<String, String> param) {
-    for (TokenMatcher provider : matcherList) {
+    for (AuthenticationMatcher provider : matcherList) {
       Authentication authentication = provider.match(param);
       if (authentication != null) {
         return authentication;
