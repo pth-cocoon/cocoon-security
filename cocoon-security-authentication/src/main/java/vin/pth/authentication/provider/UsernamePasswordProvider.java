@@ -6,14 +6,14 @@ import vin.pth.authentication.token.UsernamePasswordToken;
 import vin.pth.base.exception.authentication.AuthenticationException;
 import vin.pth.base.pojo.Authentication;
 import vin.pth.base.pojo.UserDetails;
-import vin.pth.base.service.PasswordEncoderService;
+import vin.pth.base.password.PasswordEncoder;
 import vin.pth.base.service.UserDetailsService;
 
 @RequiredArgsConstructor
 @Component
 public class UsernamePasswordProvider implements AuthenticationProvider {
 
-  private final PasswordEncoderService passwordEncoderService;
+  private final PasswordEncoder passwordEncoderService;
   private final UserDetailsService userDetailsService;
 
   @Override
