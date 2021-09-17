@@ -1,4 +1,4 @@
-package vin.pth.authentication.provider;
+package vin.pth.authorization.provider;
 
 import vin.pth.base.exception.authentication.AuthenticationException;
 import vin.pth.base.pojo.Authentication;

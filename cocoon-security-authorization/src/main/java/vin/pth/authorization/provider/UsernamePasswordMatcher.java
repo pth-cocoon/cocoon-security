@@ -1,9 +1,9 @@
-package vin.pth.authentication.provider;
+package vin.pth.authorization.provider;
 
 import java.util.Map;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
-import vin.pth.authentication.token.UsernamePasswordToken;
+import vin.pth.authorization.token.UsernamePasswordToken;
 import vin.pth.base.pojo.Authentication;
 
 @Component

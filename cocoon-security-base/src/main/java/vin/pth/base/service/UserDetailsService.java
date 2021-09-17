@@ -7,4 +7,7 @@ public interface UserDetailsService {
 
   UserDetails loadUserByUsername(String username);
 
+  UserDetails getByToken(String token);
+
+  UserDetails setByToken(UserDetails userDetails, String token);
 }

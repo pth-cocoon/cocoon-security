@@ -1,4 +1,4 @@
-package vin.pth.authentication.password;
+package vin.pth.authorization.password;
 
 import java.security.SecureRandom;
 import java.util.regex.Matcher;

@@ -1,10 +1,10 @@
-package vin.pth.authentication.manager;
+package vin.pth.authorization.manager;
 
 import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import vin.pth.authentication.provider.AuthenticationMatcher;
+import vin.pth.authorization.provider.AuthenticationMatcher;
 import vin.pth.base.exception.authentication.AuthenticationException;
 import vin.pth.base.pojo.Authentication;
 

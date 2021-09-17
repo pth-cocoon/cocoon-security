@@ -1,4 +1,4 @@
-package vin.pth.authentication.token;
+package vin.pth.authorization.token;
 
 
 import java.util.Collection;

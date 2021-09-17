@@ -1,4 +1,4 @@
-package vin.pth.authentication.provider;
+package vin.pth.authorization.provider;
 
 import java.util.Map;
 import vin.pth.base.pojo.Authentication;

@@ -1,8 +1,8 @@
-package vin.pth.authentication.provider;
+package vin.pth.authorization.provider;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import vin.pth.authentication.token.UsernamePasswordToken;
+import vin.pth.authorization.token.UsernamePasswordToken;
 import vin.pth.base.exception.authentication.AuthenticationException;
 import vin.pth.base.pojo.Authentication;
 import vin.pth.base.pojo.UserDetails;

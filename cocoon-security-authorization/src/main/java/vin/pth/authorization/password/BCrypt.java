@@ -12,7 +12,7 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-package vin.pth.authentication.password;
+package vin.pth.authorization.password;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
