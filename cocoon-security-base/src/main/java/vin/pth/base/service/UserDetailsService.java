@@ -9,5 +9,5 @@ public interface UserDetailsService {
 
   UserDetails getByToken(String token);
 
-  UserDetails setByToken(UserDetails userDetails, String token);
+  String getToken(UserDetails userDetails);
 }
