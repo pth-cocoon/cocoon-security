@@ -41,7 +41,7 @@ public abstract class AbstractAuthenticationFilter implements Filter {
       chain.doFilter(request, response);
       UserDetailsContext.clear();
     } catch (AuthenticationException e) {
-      fail((HttpServletRequest) request, (HttpServletResponse) response, new AuthenticationException(""));
+      fail((HttpServletRequest) request, (HttpServletResponse) response, e);
     }
 
   }

@@ -13,8 +13,7 @@ public interface RbacService {
    * 判断用户是否有权限访问服务
    *
    * @param request 请求，通常可以通过request获取URL，Method等信息
-   * @return 有权限返回true，否则返回false
    */
-  boolean checkPermission(HttpServletRequest request, UserDetails userDetails) throws AuthenticationException;
+  void checkPermission(HttpServletRequest request, UserDetails userDetails) throws AuthenticationException;
 
 }
