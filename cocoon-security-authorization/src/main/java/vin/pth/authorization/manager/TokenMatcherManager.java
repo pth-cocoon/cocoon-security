@@ -14,7 +14,7 @@ public class TokenMatcherManager {
 
   private final List<AuthenticationMatcher> matcherList;
 
-  public Authentication getTokenByParam(Map<String, String> param) {
+  public Authentication getTokenByParam(Map<String, String> param) throws AuthenticationException {
     for (AuthenticationMatcher provider : matcherList) {
       Authentication authentication = provider.match(param);
       if (authentication != null) {

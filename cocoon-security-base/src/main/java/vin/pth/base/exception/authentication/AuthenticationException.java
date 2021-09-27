@@ -8,9 +8,9 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class AuthenticationException extends RuntimeException {
+public class AuthenticationException extends Exception {
 
-  private String message;
+  private final String message;
 
   public AuthenticationException(String message) {
     super(message);

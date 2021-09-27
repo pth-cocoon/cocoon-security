@@ -34,8 +34,8 @@ public abstract class AbstractAuthenticationFilter implements Filter {
     throws IOException, ServletException {
     HttpServletRequest httpRequest = (HttpServletRequest) request;
     String token = httpRequest.getHeader(TOKEN_KEY);
-    UserDetails userDetails = userDetailsService.getByToken(token);
     try {
+      UserDetails userDetails = userDetailsService.getByToken(token);
       rbacService.checkPermission(httpRequest, userDetails);
       UserDetailsContext.setUserDetails(userDetails);
       chain.doFilter(request, response);

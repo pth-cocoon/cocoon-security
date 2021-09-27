@@ -13,7 +13,7 @@ public class AuthenticationManager {
 
   private final List<AuthenticationProvider> matcherList;
 
-  public Authentication authenticate(Authentication authentication) {
+  public Authentication authenticate(Authentication authentication) throws AuthenticationException {
     for (AuthenticationProvider provider : matcherList) {
       if (provider.supports(authentication.getClass())) {
         return provider.authenticate(authentication);

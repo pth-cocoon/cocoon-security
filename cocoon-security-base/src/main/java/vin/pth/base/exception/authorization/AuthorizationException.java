@@ -8,7 +8,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class AuthorizationException extends RuntimeException {
+public class AuthorizationException extends Exception {
 
   private String message;
 
