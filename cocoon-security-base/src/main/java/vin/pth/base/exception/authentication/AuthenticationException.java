@@ -17,3 +17,4 @@ public class AuthenticationException extends Exception {
     this.message = message;
   }
 }
+
