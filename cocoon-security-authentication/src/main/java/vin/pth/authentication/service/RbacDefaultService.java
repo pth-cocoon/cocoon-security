@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.util.StringUtils;
 import vin.pth.base.exception.authentication.AuthenticationException;
 import vin.pth.base.pojo.GrantedAuthority;
 import vin.pth.base.pojo.UserDetails;
@@ -20,7 +21,7 @@ public class RbacDefaultService implements RbacService {
   public void checkPermission(HttpServletRequest request, UserDetails userDetails) throws AuthenticationException {
 
     log.info("权限校验");
-    if (ADMIN_USERNAME.equals(userDetails.getUsername())) {
+    if (StringUtils.hasText(userDetails.getUsername()) && ADMIN_USERNAME.equals(userDetails.getUsername())) {
       log.warn("超管账号无条件放行");
       return;
     }

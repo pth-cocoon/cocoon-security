@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 import vin.pth.authentication.service.RbacService;
 import vin.pth.base.context.UserDetailsContext;
 import vin.pth.base.exception.authentication.AuthenticationException;
+import vin.pth.base.pojo.AuthUser;
 import vin.pth.base.pojo.UserDetails;
 import vin.pth.base.service.UserDetailsService;
 
@@ -34,6 +35,7 @@ public abstract class AbstractAuthenticationFilter implements Filter {
     throws IOException, ServletException {
     HttpServletRequest httpRequest = (HttpServletRequest) request;
     String token = httpRequest.getHeader(TOKEN_KEY);
+    UserDetailsContext.setUserDetails(AuthUser.anonymousUser());
     try {
       if (StringUtils.hasText(token)) {
         UserDetails userDetails = userDetailsService.getByToken(token);
@@ -45,8 +47,7 @@ public abstract class AbstractAuthenticationFilter implements Filter {
       fail((HttpServletRequest) request, (HttpServletResponse) response, e);
     } finally {
       // 无论过程如何，都需要清理掉当前线程变量中的用户信息
-//      UserDetailsContext.clear();
-      System.out.println(UserDetailsContext.getUserDetails());
+      UserDetailsContext.clear();
     }
   }
 
