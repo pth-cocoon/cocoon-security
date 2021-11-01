@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Objects;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +14,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +29,6 @@ class ExampleControllerTest {
 
   @Autowired
   private TestRestTemplate restTemplate;
-
-  @BeforeEach
-  void setUp() {
-  }
 
   /**
    * 登录函数单元测试
@@ -54,4 +50,32 @@ class ExampleControllerTest {
   }
 
 
+  @Test
+  void adminGet() {
+    String url = "http://127.0.0.1:" + port + "/admin/get";
+    ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
+    log.info("body is :{}" + Objects.requireNonNull(responseEntity.getBody()));
+    Assertions.assertThat(responseEntity.getStatusCode()).isEqualByComparingTo(HttpStatus.FORBIDDEN);
+
+  }
+
+  @Test
+  void anonymousGet403() {
+    String url = "http://127.0.0.1:" + port + "/anonymous/get";
+    ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
+    log.info("body is :{}" + Objects.requireNonNull(responseEntity.getBody()));
+    Assertions.assertThat(responseEntity.getStatusCode()).isEqualByComparingTo(HttpStatus.FORBIDDEN);
+  }
+
+  @Test
+  void anonymousGet200() {
+    String url = "http://127.0.0.1:" + port + "/anonymous/get";
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+    headers.set("token", "anonymous");
+    HttpEntity<String> request = new HttpEntity<>("", headers);
+    ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
+    log.info("body is :{}" + Objects.requireNonNull(responseEntity.getBody()));
+    Assertions.assertThat(responseEntity.getStatusCode()).isEqualByComparingTo(HttpStatus.OK);
+  }
 }

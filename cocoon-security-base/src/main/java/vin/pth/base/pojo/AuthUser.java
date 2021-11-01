@@ -15,7 +15,7 @@ public class AuthUser implements UserDetails {
   private Serializable userId;
   private String username;
   private String password;
-  private Collection<? extends GrantedAuthority> authority;
+  private Collection<GrantedAuthority> authority;
 
   public static AuthUser anonymousUser() {
     AuthUser user = new AuthUser();
