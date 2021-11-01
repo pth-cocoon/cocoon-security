@@ -2,3 +2,8 @@
 /cocoon-security-authentication/target/
 /cocoon-security-authorization/target/
 /cocoon-security-base/target/
+**/target/
+**/**/target
+
+.idea
+*.iml
